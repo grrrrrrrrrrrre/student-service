@@ -1,4 +1,4 @@
-import * as service from './studentService.js'
+import * as service from '../service/studentService.js'
 
 export const addStudent = async (req, res) => {
     const success = await service.addStudent(req.body)
@@ -21,7 +21,7 @@ export const findStudent = async (req, res) => {
             "message": `Student with id ${req.params.id} not found`,
             "path": req.params
         })
-    };
+    }
 }
 
 //TODO hw: implement other operations
