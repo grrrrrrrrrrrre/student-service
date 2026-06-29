@@ -9,7 +9,14 @@ const studentSchema = new Schema({
         key: String,
         of: Number,
         default: {}
-    }
+    },
+    toJSON: {
+        transform: (doc, ret) => {
+            ret._id = doc._id;
+            delete ret.password;
+            return ret;
+        }
+    },
 }).set("versionKey", "false")
 
 const Student = model('Student', studentSchema, 'college');
