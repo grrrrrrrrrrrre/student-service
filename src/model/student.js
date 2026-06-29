@@ -12,11 +12,16 @@ const studentSchema = new Schema({
     },
     toJSON: {
         transform: (doc, ret) => {
-            ret._id = doc._id;
+            ret.id = doc._id;
+            delete ret._id;
             delete ret.password;
-            return ret;
+        },
+    toObject: {
+        transform: (doc, ret) => {
+            ret.id = doc._id;
+            delete ret._id
         }
-    },
+    }},
 }).set("versionKey", "false")
 
 const Student = model('Student', studentSchema, 'college');
